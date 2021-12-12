@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class MockNotes : Notes {
-    val notes = listOf(Post("1", "Meeting", "Meeting at 2PM"),
+    val notes = mutableListOf(Post("1", "Meeting", "Meeting at 2PM"),
             Post("2", "Lunch", "Lunch at 2PM"),
             Post("3", "Breakfast", "Breakfast at 2PM"))
 
@@ -15,5 +15,10 @@ class MockNotes : Notes {
         return notes.firstOrNull{
             it.postId == id
         } ?: throw NoSuchElementException("Could not find a note with the id $id")
+    }
+
+    override fun addNote(post: Post): Post {
+        notes.add(post)
+        return post
     }
 }

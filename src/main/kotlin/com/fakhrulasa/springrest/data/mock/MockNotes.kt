@@ -12,12 +12,17 @@ class MockNotes : Notes {
 
     override fun getNotes(): Collection<Post> = notes
     override fun getNote(id: String): Post {
-        return notes.firstOrNull{
+        return notes.firstOrNull {
             it.postId == id
         } ?: throw NoSuchElementException("Could not find a note with the id $id")
     }
 
     override fun addNote(post: Post): Post {
+        if (notes.any {
+                    it.postId == post.postId
+                }) {
+            throw IllegalArgumentException("A note is already existed with ${post.postId} this id")
+        }
         notes.add(post)
         return post
     }

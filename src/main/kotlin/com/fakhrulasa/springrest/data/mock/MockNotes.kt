@@ -17,12 +17,13 @@ class MockNotes : Notes {
         } ?: throw NoSuchElementException("Could not find a note with the id $id")
     }
 
-    override fun addNote(post: Post): Post {
+    override fun addNote(id:String,title:String,detail:String): Post {
         if (notes.any {
-                    it.postId == post.postId
+                    it.postId == id
                 }) {
-            throw IllegalArgumentException("A note is already existed with ${post.postId} this id")
+            throw IllegalArgumentException("A note is already existed with $id this id")
         }
+        val post=Post(id,title,detail)
         notes.add(post)
         return post
     }

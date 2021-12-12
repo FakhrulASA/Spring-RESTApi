@@ -25,5 +25,5 @@ class NoteController(private val service: NoteService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addNote(@RequestBody post: Post)=service.addNote(post)
+    fun addNote(@RequestBody id: String,@RequestBody title: String,@RequestBody detail: String)=service.addNote(id,title,detail)
 }

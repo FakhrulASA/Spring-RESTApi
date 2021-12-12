@@ -9,8 +9,10 @@
 
 ### Homepage on starting the localhost
 <img src="https://github.com/FakhrulASA/Spring-RESTApi/blob/master/screenshot/springdemo.png" width="550" title="App Demo">
+
 ### Getting all available posts
 <img src="https://github.com/FakhrulASA/Spring-RESTApi/blob/master/screenshot/springallnote.png" title="App Demo">
+
 ### Getting a particular post with post id
 <img src="https://github.com/FakhrulASA/Spring-RESTApi/blob/master/screenshot/springnote.png" width="350" title="App Demo">
 

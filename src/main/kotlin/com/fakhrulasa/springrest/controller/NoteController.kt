@@ -1,14 +1,22 @@
 package com.fakhrulasa.springrest.controller
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.fakhrulasa.springrest.model.Post
+import com.fakhrulasa.springrest.service.NoteService
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api/hello")
-class NoteController {
+@RequestMapping("api/notes")
+class NoteController(private val service: NoteService) {
+
+    @ExceptionHandler(NoSuchElementException::class)
+    fun handleException(e:NoSuchElementException):ResponseEntity<String> =
+            ResponseEntity(e.message, HttpStatus.NOT_FOUND)
+
     @GetMapping
-    fun helloWorld():String{
-        return "Hello World"
-    }
+    fun getNotes():Collection<Post> = service.getNotes()
+
+    @GetMapping("/{id}")
+    fun getNote(@PathVariable id:String)= service.getNote(id)
 }

@@ -27,4 +27,13 @@ class MockNotes : Notes {
         notes.add(post)
         return post
     }
+
+    override fun uodateNote(post: Post): Post {
+        val avalablePost = notes.firstOrNull{
+            it.postId==post.postId
+        }?: throw NoSuchElementException("Could Not Find The Bank with Account Number ${post.postId}")
+        notes.remove(avalablePost)
+        notes.add(post)
+        return post
+    }
 }

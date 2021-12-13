@@ -29,5 +29,10 @@ class NoteController(private val service: NoteService) {
 
     @PatchMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    fun updateBank(@RequestBody post: Post): Post=service.updateNote(post)
+    fun updateNote(@RequestBody post: Post): Post=service.updateNote(post)
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    fun deleteNote(@PathVariable postId:String):Unit=service.deleteNote(postId)
 }

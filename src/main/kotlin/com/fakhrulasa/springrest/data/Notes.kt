@@ -7,4 +7,5 @@ interface Notes {
     fun getNote(id:String):Post
     fun addNote(id:String,title:String,detail:String):Post
     fun uodateNote(post: Post):Post
+    fun deleteNotes(id: String)
 }

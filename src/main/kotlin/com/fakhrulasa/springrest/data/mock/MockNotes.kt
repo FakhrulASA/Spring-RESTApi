@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository
 class MockNotes : Notes {
     val notes = mutableListOf(Post("1", "Meeting", "Meeting at 2PM"),
             Post("2", "Lunch", "Lunch at 2PM"),
-            Post("3", "Breakfast", "Breakfast at 2PM"))
+            Post("3", "Breakfast", "Breakfast at 2PM"),
+            Post("4", "fasfasfasf", "fsafasfafasf at 2PM"))
 
     override fun getNotes(): Collection<Post> = notes
     override fun getNote(id: String): Post {
@@ -35,5 +36,11 @@ class MockNotes : Notes {
         notes.remove(avalablePost)
         notes.add(post)
         return post
+    }
+
+    override fun deleteNotes(id: String) {
+        val currentNote = notes.firstOrNull{ it.postId == id}
+                ?:throw NoSuchElementException("Could not find to delete any note with id with $id")
+        notes.remove(currentNote)
     }
 }

@@ -10,4 +10,5 @@ class NoteService(private val dataSource:Notes) {
     fun getNote(id:String):Post = dataSource.getNote(id)
     fun addNote(id:String,title:String,detail:String): Post = dataSource.addNote(id,title,detail)
     fun updateNote(post: Post): Post = dataSource.uodateNote(post)
+    fun deleteNote(id: String): Unit = dataSource.deleteNotes(id)
 }
